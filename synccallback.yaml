@@ -10,29 +10,48 @@ Resources:
           'use strict';
           // Commands Lambda
           exports.handler = (event, context, callback) => {
-
-            //Get's the request body for you
+          
+            //Gets the request body for you
             let requestBody = JSON.parse(event.body);
 
             //Put your commands here
             var responseBody = {
-              "commands": [
-
-                ]
-            }
-
-            let statusCode = 200;
-            let headers = {};
-
-            var response = {
-              "statusCode": statusCode,
-              "headers": headers,
-              "body": JSON.stringify(responseBody),
-              "isBase64Encoded": false
-            };
-
-            callback(null, response);
+              "result": "SUCCESS",
+              "commands": [{
+                "type": "com.okta.tokens.assertion.patch",
+                  "value": [{
+                    "op": "add",
+                    "path": "/claims/externalData",
+                      "value": {
+                        "attributes": {
+                          "NameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+                        },
+                        "attributeValues": [{
+                          "attributes": {
+                            "xsi:type": "xs:string"
+                          },
+                          "value": "NOT_STORED_IN_OKTA"
+                        }]
+                      }
+                  }]
+              }],
+            "debugContext": {
+              "diagnosticInformation": "showsUpInSyslog"
+            } 
+          }
+          let statusCode = 200;
+          let headers = {};
+          
+          var response = {
+            "statusCode": statusCode,
+            "headers": headers,
+            "body": JSON.stringify(responseBody),
+            "isBase64Encoded": false
           };
+    
+          callback(null, response);
+        };
+
       Description: A Lambda that returns Okta Commands for testing sync callbacks
       FunctionName: CommandsLambda
       Handler: index.handler
