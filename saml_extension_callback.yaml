@@ -10,7 +10,7 @@ Resources:
           exports.handler = (event, context, callback) => {
               //Get's the request body for you
               let requestBody = JSON.parse(event.body);
-              
+
               //Put your commands here
               var responseBody =
               {

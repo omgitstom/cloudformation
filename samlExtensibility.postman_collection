@@ -1,0 +1,58 @@
+{
+	"id": "165ebacc-514e-1911-3ae7-453ed2f0b194",
+	"name": "samlExtensibility",
+	"description": "Postman request to configure callbacks for SAML Extensibility",
+	"order": [
+		"14e174ac-3e5a-26b3-6207-cd5a7e4f1a2d"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1533058027706,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "14e174ac-3e5a-26b3-6207-cd5a7e4f1a2d",
+			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: SSWS {{apikey}}\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "SSWS {{apikey}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/api/v1/callbacks",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "165ebacc-514e-1911-3ae7-453ed2f0b194",
+			"data": [],
+			"dataMode": "raw",
+			"name": "{{url}}/api/v1/callbacks",
+			"description": "Configure Callback for SAML Apps",
+			"descriptionFormat": "html",
+			"time": 1533070332435,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"name\": \"Add SAML attribute\",\n        \"type\": {\n            \"name\": \"com.okta.tokens.transform\",\n            \"version\": \"1.0\"\n        },\n        \"channel\": {\n            \"name\": \"HTTP\",\n            \"version\": \"1.0\",\n            \"config\": {\n                \"uri\": \"https://yourapigatewayURL/LATEST/commands\",\n                \"headers\": [\n                    {\n                        \"key\": \"x-api-key\",\n                        \"value\": \"******\"\n                    }\n                ],\n                \"method\": \"POST\"\n            }\n        },\n        \"debugging\": false\n    }"
+		}
+	]
+}
