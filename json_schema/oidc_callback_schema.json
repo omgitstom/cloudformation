@@ -1,0 +1,64 @@
+{
+  "definitions": {},
+  "type": "object",
+  "properties": {
+    "commands": {
+      "type": "array",
+      "items": {
+        "anyOf": [{
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "com.okta.tokens.access_token.patch",
+                "com.okta.tokens.refresh_token.patch"
+              ]
+            },
+            "value": {
+              "type": "array",
+              "items": {
+                "anyOf": [{
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "add", "replace"
+                      ]
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "anyOf": [{
+                        "type": "string"
+                      }, {
+                        "type": "object"
+                      },{
+                        "type": "number"
+                      }]
+                    }
+                  }
+                }, {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "remove"
+                      ]
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  }
+                }]
+              }
+            }
+          }
+        }]
+      }
+    }
+  }
+}
+
