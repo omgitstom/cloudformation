@@ -50,8 +50,3 @@ echo "Test in browser: $API_ENDPOINT"
 echo ""
 echo "To Delete the Stack use this command"
 echo "aws cloudformation delete-stack --stack-name $STACK_NAME &"
-
-
-
-
-
