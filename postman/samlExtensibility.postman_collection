@@ -1,7 +1,7 @@
 {
 	"id": "165ebacc-514e-1911-3ae7-453ed2f0b194",
 	"name": "samlExtensibility",
-	"description": "Postman request to configure callbacks for SAML Extensibility",
+	"description": "Postman request to configure webhooks for SAML Extensibility",
 	"order": [
 		"14e174ac-3e5a-26b3-6207-cd5a7e4f1a2d"
 	],
@@ -44,7 +44,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"name": "{{url}}/api/v1/callbacks",
-			"description": "Configure Callback for SAML Apps",
+			"description": "Configure Webhook for SAML Apps",
 			"descriptionFormat": "html",
 			"time": 1533070332435,
 			"version": 2,

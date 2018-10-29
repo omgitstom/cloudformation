@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: AWS CloudFormation template that contains a single Lambda function behind
-  an API Gateway for Okta Sync Callbacks
+  an API Gateway for Okta Sync Webhooks
 Resources:
   CommandsLambda:
     Type: AWS::Lambda::Function
@@ -11,39 +11,15 @@ Resources:
           // Commands Lambda
           exports.handler = (event, context, callback) => {
 
-            //Get's the request body / query parameters for you
+            //Get's the request body for you
             let requestBody = JSON.parse(event.body);
-            let queryParams = event.queryStringParameters;
 
             //Put your commands here
             var responseBody = {
-              "commands": [{
-                  "type": "com.okta.tokens.access_token.patch",
-                  "value": [{
-                    "op": "add",
-                    "path": "/claims/guid",
-                    "value": "F0384685-F87D-474B-848D-2058AC5655A7"
-                  }, {
-                    "op": "replace",
-                    "path": "/lifetime",
-                    "value": {
-                      "expiration": 3600
-                    }
-                  }]
-                },
-                {
-                  "type": "com.okta.tokens.refresh_token.patch",
-                  "value": [{
-                    "op": "replace",
-                    "path": "/lifetime/window",
-                    "value": 75000
-                  }]
-                }
-              ],
-              "debugContext": {
-                "stuff": "hitTheFan"
-              }
-            };
+              "commands": [
+
+                ]
+            }
 
             let statusCode = 200;
             let headers = {};
@@ -57,7 +33,7 @@ Resources:
 
             callback(null, response);
           };
-      Description: A Lambda that returns Okta Commands for testing sync callbacks
+      Description: A Lambda that returns Okta Commands for testing sync webhooks
       FunctionName: CommandsLambda
       Handler: index.handler
       Role: !GetAtt 'LambdaExecutionRole.Arn'
@@ -80,7 +56,7 @@ Resources:
     Type: AWS::ApiGateway::RestApi
     Properties:
       Name: Commands API
-      Description: API used for returning commands to okta sync callback requests
+      Description: API used for returning commands to okta sync webhook requests
       FailOnWarnings: true
   LambdaPermission:
     Type: AWS::Lambda::Permission
