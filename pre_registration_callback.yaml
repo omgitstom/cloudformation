@@ -18,11 +18,15 @@ Resources:
             var responseBody = {
               "commands": [{
                   "type": "com.okta.user.profile.update",
-                  "firstName": "James"
+                  "value": {
+                    "firstName": "James"
+                  }
               },
               {
                   "type": "com.okta.user.profile.update",
-                  "lastName": "Joyce"
+                  "value": {
+                    "lastName": "Joyce"
+                  }
               }
                 ]
             }
