@@ -17,7 +17,7 @@ Resources:
                   "result": "SUCCESS",
                   "commands":
                   [{
-                    "type": "com.okta.tokens.assertion.patch",
+                    "type": "com.okta.assertion.patch",
                     "value":
                     [{
                       "op": "add",
@@ -58,7 +58,7 @@ Resources:
       FunctionName: CommandsLambda
       Handler: index.handler
       Role: !GetAtt 'LambdaExecutionRole.Arn'
-      Runtime: nodejs6.10
+      Runtime: nodejs8.10
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
