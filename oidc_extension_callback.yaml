@@ -18,24 +18,22 @@ Resources:
             //Put your commands here
             var responseBody = {
               "commands": [{
-                  "type": "com.okta.tokens.access_token.patch",
+                  "type": "com.okta.access.patch",
                   "value": [{
                     "op": "add",
                     "path": "/claims/guid",
                     "value": "F0384685-F87D-474B-848D-2058AC5655A7"
                   }, {
                     "op": "replace",
-                    "path": "/lifetime",
-                    "value": {
-                      "expiration": 3600
-                    }
+                    "path": "token/lifetime/expiration",
+                    "value": "expiration": 3600
                   }]
                 },
                 {
-                  "type": "com.okta.tokens.refresh_token.patch",
+                  "type": "com.okta.tokens.refresh_token.patch", // Is this still supported?
                   "value": [{
                     "op": "replace",
-                    "path": "/lifetime/window",
+                    "path": "token/lifetime/window",
                     "value": 75000
                   }]
                 }
@@ -61,7 +59,7 @@ Resources:
       FunctionName: CommandsLambda
       Handler: index.handler
       Role: !GetAtt 'LambdaExecutionRole.Arn'
-      Runtime: nodejs6.10
+      Runtime: nodejs8.10
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
