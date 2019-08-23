@@ -1,0 +1,7 @@
+{
+ "name": "Okta Inline Hooks with CloudFormation",
+ "description": "This repo contains AWS CloudFormation Templates to quickly configure a lambda behind API Gateway that can responsd to a Okta Inline Hook",
+ "categories": [
+    "hooks"
+  ]
+}
